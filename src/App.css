@@ -98,3 +98,18 @@
   border-radius: 12px;
   backdrop-filter: blur(5px);
 }
+.features-section { padding: 100px 20px; max-width: 1200px; margin: 0 auto; }
+.section-header { font-size: 2.5rem; text-align: center; margin-bottom: 60px; color: #fca311; }
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+
+.feature-card {
+  background: rgba(255,255,255,0.03);
+  padding: 30px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+.feature-card:hover { border-color: #10b981; transform: translateY(-5px); }
+.feature-icon { font-size: 3rem; margin-bottom: 20px; }
+
+.tech-section { text-align: center; padding: 60px 20px; border-top: 1px solid #333; }
+.tech-logos { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; color: #888; font-size: 1.2rem; margin-top: 20px; }
