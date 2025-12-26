@@ -178,7 +178,7 @@
 
 /* --- FEATURES --- */
 .features-section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; text-align: center; }
-.section-header { font-size: 2.5rem; margin-bottom: 50px; color: #fca311; }
+.section-header { font-size: 2.5rem; margin-bottom: 50px; color: #10b981; }
 .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
 .feature-card {
   background: rgba(255,255,255,0.03);
@@ -247,11 +247,11 @@
 
 .review-card:hover {
   transform: translateY(-5px);
-  border-color: #fca311; /* Жовтий акцент при наведенні */
+  border-color: #10b981; 
 }
 
 .stars {
-  color: #fca311;
+  color: #10b981;
   font-size: 1.2rem;
   margin-bottom: 15px;
 }
@@ -270,6 +270,49 @@
   font-weight: 600;
 }
 
+.faq-section {
+  padding: 80px 20px;
+  max-width: 800px; 
+  margin: 0 auto;
+}
+
+.faq-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.faq-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+  overflow: hidden;
+}
+
+.faq-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: #10b981;
+}
+
+.faq-question {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: white;
+}
+
+.faq-answer {
+  padding: 0 20px 20px 20px;
+  margin: 0;
+  color: #aaa;
+  line-height: 1.6;
+  font-size: 1rem;
+}
 /* --- FOOTER --- */
 .footer {
   padding: 60px 20px;

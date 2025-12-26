@@ -1,8 +1,45 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import './App.css';
 import homeScreenImg from './assets/Home.png';
-function App() {
+
+
+const FAQItem = ({ question, answer, isOpen, onClick }: any) => {
+  return (
+    <motion.div 
+      className="faq-item"
+      initial={false}
+      onClick={onClick}
+    >
+      <div className="faq-question">
+        <span>{question}</span>
+        <motion.span 
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.3 }}
+          style={{ display: 'inline-block' }}
+        >
+          ▼
+        </motion.span>
+      </div>
+      
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            style={{ overflow: 'hidden' }}
+          >
+            <p className="faq-answer">{answer}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+};
+function App() { 
+  
   const fadeInUp = {
     hidden: { opacity: 0, y: 60 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
@@ -15,7 +52,17 @@ function App() {
       transition: { staggerChildren: 0.2 }
     }
   };
+  const [openFAQ, setOpenFAQ] = useState<number | null>(null);
 
+  const toggleFAQ = (index: number) => {
+    setOpenFAQ(openFAQ === index ? null : index);
+  };
+
+  const faqData = [
+    { q: "Is Cinelink free to use?", a: "Yes! You can browse movies, actors, and ratings completely for free. Advanced features like watchlist sync require a free account." },
+    { q: "Where does the data come from?", a: "We use the TMDB API to ensure all movie information, posters, and cast details are up-to-date and accurate." },
+    { q: "Does it work offline?", a: "Absolutely. Movies you add to your watchlist are cached locally on your device, so you can view them even without internet." },
+  ];
   return (
     <div className="landing-container">
       
@@ -175,7 +222,26 @@ function App() {
               ))}
           </div>
       </section>
+      <section className="faq-section">
+          <motion.h2 
+            initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} 
+            className="section-header"
+          >
+            Frequently Asked Questions
+          </motion.h2>
 
+          <div className="faq-grid">
+            {faqData.map((item, index) => (
+              <FAQItem 
+                key={index}
+                question={item.q}
+                answer={item.a}
+                isOpen={openFAQ === index}
+                onClick={() => toggleFAQ(index)}
+              />
+            ))}
+          </div>
+       </section>
       {/* 5. FOOTER (Нове!) */}
       <footer className="footer">
           <div className="footer-content">
