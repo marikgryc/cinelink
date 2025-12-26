@@ -1,30 +1,62 @@
+/* Основний контейнер */
 .landing-container {
   overflow-x: hidden;
   color: white;
-  perspective: 1000px;
+  background-color: #121212;
+  perspective: 1500px; /* Сильніша перспектива для телефону */
 }
 
-/* HERO */
+/* --- HERO --- */
 .hero-section {
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* На мобільних - в стовпчик */
   align-items: center;
   justify-content: center;
+  padding: 60px 20px;
+  background: radial-gradient(circle at 50% 30%, #005f4033 0%, transparent 60%);
+  gap: 60px;
+}
+
+/* Якщо екран широкий - ставимо текст зліва, телефон справа */
+@media (min-width: 900px) {
+  .hero-section {
+    flex-direction: row;
+    text-align: left;
+    justify-content: space-between;
+    padding: 0 100px;
+  }
+  .hero-content {
+    max-width: 500px;
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  padding: 80px 20px;
-  background: radial-gradient(circle at top center, #005f4033 0%, transparent 70%);
+  z-index: 2;
+}
+
+.app-badge {
+  background: rgba(255,255,255,0.1);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: #10b981;
+  font-weight: 600;
+  margin-bottom: 20px;
+  border: 1px solid rgba(16, 185, 129, 0.2);
 }
 
 .hero-title {
-  font-size: 4rem;
+  font-size: 3.5rem;
   line-height: 1.1;
   font-weight: 800;
   margin-bottom: 20px;
-}
-
-@media (min-width: 768px) {
-  .hero-title { font-size: 5rem; }
 }
 
 .text-gradient {
@@ -36,80 +68,118 @@
 .hero-subtitle {
   font-size: 1.2rem;
   color: #ccc;
-  max-width: 600px;
   margin-bottom: 40px;
   line-height: 1.6;
 }
 
-.cta-button {
-  display: inline-block;
-  text-decoration: none;
-  background: linear-gradient(90deg, #005f40, #10b981);
-  color: white;
-  padding: 16px 40px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  border-radius: 50px;
-  box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
-}
-
-.hero-image-wrapper {
-  margin-top: 60px;
-  filter: drop-shadow(0 20px 50px rgba(0,0,0,0.5));
-  width: 100%;
+/* Кнопки App Store */
+.store-buttons {
   display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
-.mockup-window {
-  background: #1e1e1e;
-  border-radius: 12px;
-  border: 1px solid #333;
-  width: 90%;
-  max-width: 900px;
-  aspect-ratio: 16/9;
+@media (min-width: 900px) {
+    .store-buttons { justify-content: flex-start; }
+}
+
+.store-btn {
+  background: white;
+  color: black;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.store-btn.google {
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.store-btn:hover { transform: translateY(-3px); }
+
+/* --- PHONE MOCKUP (CSS ONLY) --- */
+.phone-wrapper {
+  /* Тінь телефону */
+  filter: drop-shadow(20px 30px 50px rgba(0,0,0,0.5));
+}
+
+.phone-mockup {
+  width: 300px;
+  height: 600px;
+  background: #000;
+  border-radius: 45px;
+  border: 8px solid #333; /* Рамка телефону */
+  box-shadow: inset 0 0 20px rgba(255,255,255,0.1);
+  position: relative;
   overflow: hidden;
+}
+
+/* Динамічний острів (Notch) */
+.phone-notch {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 25px;
+  background: black;
+  border-radius: 20px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.camera { width: 8px; height: 8px; background: #1a1a1a; border-radius: 50%; }
+.speaker { width: 40px; height: 4px; background: #1a1a1a; border-radius: 2px; }
+
+/* Екран */
+.phone-screen {
+  width: 100%;
+  height: 100%;
+  background: #121212;
   position: relative;
 }
 
-.mockup-header {
-  height: 30px;
-  background: #2a2a2a;
-  border-bottom: 1px solid #333;
-  display: flex;
-  align-items: center;
-  padding-left: 15px;
-  gap: 8px;
+.screen-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
 }
 
-.dot { width: 10px; height: 10px; border-radius: 50%; }
-.red { background: #ff5f56; }
-.yellow { background: #ffbd2e; }
-.green { background: #27c93f; }
-
-.mockup-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
-
-.mockup-overlay {
+.screen-overlay {
   position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(0,0,0,0.6);
-  padding: 20px 40px;
-  border-radius: 12px;
-  backdrop-filter: blur(5px);
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 30px 20px;
+  background: linear-gradient(to top, black 0%, transparent 100%);
+  box-sizing: border-box;
 }
-.features-section { padding: 100px 20px; max-width: 1200px; margin: 0 auto; }
-.section-header { font-size: 2.5rem; text-align: center; margin-bottom: 60px; color: #fca311; }
-.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
 
+.screen-overlay h3 { margin: 0; font-size: 1.5rem; }
+.screen-overlay p { margin: 5px 0 0; color: #10b981; font-size: 0.9rem; }
+
+/* --- FEATURES --- */
+.features-section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; text-align: center; }
+.section-header { font-size: 2.5rem; margin-bottom: 50px; color: #fca311; }
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
 .feature-card {
   background: rgba(255,255,255,0.03);
   padding: 30px;
   border-radius: 20px;
   border: 1px solid rgba(255,255,255,0.05);
 }
-.feature-card:hover { border-color: #10b981; transform: translateY(-5px); }
-.feature-icon { font-size: 3rem; margin-bottom: 20px; }
-
-.tech-section { text-align: center; padding: 60px 20px; border-top: 1px solid #333; }
-.tech-logos { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; color: #888; font-size: 1.2rem; margin-top: 20px; }
+.feature-icon { font-size: 2.5rem; margin-bottom: 15px; }

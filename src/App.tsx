@@ -1,15 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import './App.css'; 
-
+import './App.css';
+import homeScreenImg from './assets/Home.png';
 function App() {
-  // Анімація появи (плавно знизу вгору)
   const fadeInUp = {
     hidden: { opacity: 0, y: 60 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
   };
 
-  // Каскадна анімація для карток 
   const staggerContainer = {
     hidden: { opacity: 0 },
     visible: {
@@ -21,70 +19,81 @@ function App() {
   return (
     <div className="landing-container">
       
-      {/* 1. HERO SECTION (Головний екран) */}
+      {/* HERO SECTION */}
       <section className="hero-section">
         <div className="hero-content">
+          <motion.div 
+            initial="hidden" whileInView="visible" variants={fadeInUp}
+            className="app-badge"
+          >
+            Coming Soon on iOS & Android
+          </motion.div>
+
           <motion.h1 
             initial="hidden" whileInView="visible" variants={fadeInUp}
             className="hero-title"
           >
-            Discover Cinema <br /> 
-            <span className="text-gradient">Without Limits.</span>
+            Your Cinema. <br /> 
+            <span className="text-gradient">In Your Pocket.</span>
           </motion.h1>
 
           <motion.p 
             initial="hidden" whileInView="visible" variants={fadeInUp}
             className="hero-subtitle"
           >
-            <strong>Cinelink</strong> is your ultimate guide to movies, actors, and ratings. 
-            Powered by modern web technologies and real-time data.
+            <strong>Cinelink App</strong> gives you instant access to thousands of movies. 
+            Track what you watch, rate films, and discover new favorites on the go.
           </motion.p>
 
-          <motion.a
-            href="http://localhost:5173"
+          <motion.div 
+            className="store-buttons"
             initial="hidden" whileInView="visible" variants={fadeInUp}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="cta-button"
           >
-            Open Cinelink App
-          </motion.a>
+             {/* Імітація кнопок сторів */}
+             <button className="store-btn">
+                <span></span> App Store
+             </button>
+             <button className="store-btn google">
+                <span>▶</span> Google Play
+             </button>
+          </motion.div>
         </div>
 
-        {/* 3D Mockup (Ефект нахиленого екрану) */}
+        {/* 3D PHONE MOCKUP */}
         <motion.div 
-           initial={{ opacity: 0, rotateX: 20, rotateY: -20, scale: 0.9 }}
-           whileInView={{ opacity: 1, rotateX: 10, rotateY: -10, scale: 1 }}
-           transition={{ duration: 1.2 }}
-           className="hero-image-wrapper"
+           initial={{ opacity: 0, rotateZ: 5, rotateY: 20, scale: 0.8 }}
+           whileInView={{ opacity: 1, rotateZ: 0, rotateY: -15, scale: 1 }}
+           transition={{ duration: 1.5, ease: "easeOut" }}
+           className="phone-wrapper"
         >
-           <div className="mockup-window">
-              <div className="mockup-header">
-                <span className="dot red"></span>
-                <span className="dot yellow"></span>
-                <span className="dot green"></span>
-                <span className="mockup-address-bar">cinelink.com</span>
-              </div>
-              {/* Тут картинка-заглушка. Пізніше зробиш скріншот свого готового сайту і вставиш сюди */}
-              <img 
-                src="https://image.tmdb.org/t/p/original/xOMo8BRK7PfcJv9JCnx7s5hj0PX.jpg" 
-                alt="Cinelink Interface" 
-                className="mockup-img"
-              />
-              <div className="mockup-overlay">
-                <h2>Cinelink Web Interface</h2>
+           <div className="phone-mockup">
+             
+              
+              <div className="phone-screen">
+                  {/* Заміни це посилання на вертикальний скріншот свого мобільного додатку! */}
+                  <img 
+                    src={homeScreenImg}
+                    alt="App Screen" 
+                    className="screen-img"
+                  />
+                  
+               
+                  <div className="screen-overlay">
+                   
+                    <p>Movie of the day</p>
+                  </div>
               </div>
            </div>
         </motion.div>
       </section>
 
-      {/* 2. FEATURES GRID  */}
+      {/* FEATURES */}
       <section className="features-section">
         <motion.h2 
           initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
           className="section-header"
         >
-          Why Cinelink?
+          App Features
         </motion.h2>
 
         <motion.div 
@@ -94,9 +103,9 @@ function App() {
           viewport={{ once: true }}
         >
           {[
-            { title: "Real-time Data", desc: "Always up-to-date movie stats & posters.", icon: "🚀" },
-            { title: "Smooth UX", desc: "Buttery smooth interactions with React.", icon: "✨" },
-            { title: "Smart Search", desc: "Find any movie or actor in milliseconds.", icon: "🔍" }
+            { title: "Offline Mode", desc: "Save movies to your watchlist locally.", icon: "⚡" },
+            { title: "Notifications", desc: "Get notified when new episodes drop.", icon: "🔔" },
+            { title: "Dark Mode", desc: "Eye-friendly interface for night owls.", icon: "🌙" }
           ].map((item, index) => (
             <motion.div key={index} variants={fadeInUp} className="feature-card">
               <div className="feature-icon">{item.icon}</div>
@@ -106,18 +115,7 @@ function App() {
           ))}
         </motion.div>
       </section>
-
       
-      <section className="tech-section">
-        <p>Built with modern stack</p>
-        <div className="tech-logos">
-           <span>React</span>
-           <span>TypeScript</span>
-           <span>Vite</span>
-           <span>Framer Motion</span>
-           <span>TMDB API</span>
-        </div>
-      </section>
     </div>
   );
 }
