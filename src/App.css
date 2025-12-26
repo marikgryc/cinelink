@@ -18,18 +18,22 @@
   gap: 60px;
 }
 
-/* Якщо екран широкий - ставимо текст зліва, телефон справа */
 @media (min-width: 900px) {
   .hero-section {
     flex-direction: row;
     text-align: left;
-    justify-content: space-between;
-    padding: 0 100px;
+    justify-content: center; 
+    gap: 100px; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 20px;
   }
+
   .hero-content {
     max-width: 500px;
     align-items: flex-start;
     text-align: left;
+    flex-shrink: 0; 
   }
 }
 

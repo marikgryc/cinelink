@@ -46,17 +46,29 @@ function App() {
           </motion.p>
 
           <motion.div 
-            className="store-buttons"
-            initial="hidden" whileInView="visible" variants={fadeInUp}
-          >
-             {/* Імітація кнопок сторів */}
-             <button className="store-btn">
-                <span></span> App Store
-             </button>
-             <button className="store-btn google">
-                <span>▶</span> Google Play
-             </button>
-          </motion.div>
+  className="store-buttons"
+  initial="hidden" whileInView="visible" variants={fadeInUp}
+>
+  {/* Кнопка App Store */}
+  <button className="store-btn">
+    <img 
+      src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" 
+      alt="Apple Logo" 
+      style={{ width: '20px', height: '20px' }} // Налаштовуємо розмір картинки
+    />
+    App Store
+  </button>
+
+  {/* Кнопка Google Play */}
+  <button className="store-btn google">
+    <img 
+      src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Play_Arrow_logo.svg" 
+      alt="Google Play Logo" 
+      style={{ width: '20px', height: '20px' }} 
+    />
+    Google Play
+  </button>
+</motion.div> 
         </div>
 
         {/* 3D PHONE MOCKUP */}
@@ -66,9 +78,7 @@ function App() {
            transition={{ duration: 1.5, ease: "easeOut" }}
            className="phone-wrapper"
         >
-           <div className="phone-mockup">
-             
-              
+           <div className="phone-mockup">                   
               <div className="phone-screen">
                   {/* Заміни це посилання на вертикальний скріншот свого мобільного додатку! */}
                   <img 
@@ -76,8 +86,6 @@ function App() {
                     alt="App Screen" 
                     className="screen-img"
                   />
-                  
-               
                   <div className="screen-overlay">
                    
                     <p>Movie of the day</p>
