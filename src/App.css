@@ -187,3 +187,123 @@
   border: 1px solid rgba(255,255,255,0.05);
 }
 .feature-icon { font-size: 2.5rem; margin-bottom: 15px; }
+.stats-section {
+  padding: 60px 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.stats-grid {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #10b981; /* Зелений колір */
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  font-size: 1.1rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* --- REVIEWS SECTION --- */
+.reviews-section {
+  padding: 100px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.review-card {
+  background: #1e1e1e;
+  padding: 30px;
+  border-radius: 16px;
+  text-align: left;
+  border: 1px solid #333;
+  transition: transform 0.3s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
+  border-color: #fca311; /* Жовтий акцент при наведенні */
+}
+
+.stars {
+  color: #fca311;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.review-card p {
+  color: #ccc;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.review-card h4 {
+  color: white;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* --- FOOTER --- */
+.footer {
+  padding: 60px 20px;
+  border-top: 1px solid #333;
+  background: #0a0a0a;
+  text-align: center;
+  color: #666;
+}
+
+.footer h3 {
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.footer-links {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.footer-links a {
+  color: #888;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: #10b981;
+}
+
+/* Mobile Fixes */
+@media (max-width: 768px) {
+  .stats-grid { gap: 40px; }
+  .stat-number { font-size: 2.5rem; }
+} 

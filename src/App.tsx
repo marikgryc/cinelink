@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="landing-container">
       
-      {/* HERO SECTION */}
+      {/* 1. HERO SECTION */}
       <section className="hero-section">
         <div className="hero-content">
           <motion.div 
@@ -46,48 +46,42 @@ function App() {
           </motion.p>
 
           <motion.div 
-  className="store-buttons"
-  initial="hidden" whileInView="visible" variants={fadeInUp}
->
-  {/* Кнопка App Store */}
-  <button className="store-btn">
-    <img 
-      src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" 
-      alt="Apple Logo" 
-      style={{ width: '20px', height: '20px' }} // Налаштовуємо розмір картинки
-    />
-    App Store
-  </button>
-
-  {/* Кнопка Google Play */}
-  <button className="store-btn google">
-    <img 
-      src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Play_Arrow_logo.svg" 
-      alt="Google Play Logo" 
-      style={{ width: '20px', height: '20px' }} 
-    />
-    Google Play
-  </button>
-</motion.div> 
+            className="store-buttons"
+            initial="hidden" whileInView="visible" variants={fadeInUp}
+          >
+             {/* App Store */}
+             <button className="store-btn">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple" style={{width: 20}} />
+                App Store
+             </button>
+             {/* Google Play */}
+             <button className="store-btn google">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Play_Arrow_logo.svg" alt="Google" style={{width: 20}} />
+                Google Play
+             </button>
+          </motion.div>
         </div>
 
-        {/* 3D PHONE MOCKUP */}
+        {/* PHONE MOCKUP */}
         <motion.div 
            initial={{ opacity: 0, rotateZ: 5, rotateY: 20, scale: 0.8 }}
            whileInView={{ opacity: 1, rotateZ: 0, rotateY: -15, scale: 1 }}
            transition={{ duration: 1.5, ease: "easeOut" }}
            className="phone-wrapper"
         >
-           <div className="phone-mockup">                   
+           <div className="phone-mockup">
+              <div className="phone-notch">
+                <div className="camera"></div>
+                <div className="speaker"></div>
+              </div>
               <div className="phone-screen">
-                  {/* Заміни це посилання на вертикальний скріншот свого мобільного додатку! */}
+                  {/* Заміни посилання на свій вертикальний скріншот, якщо є */}
                   <img 
                     src={homeScreenImg}
                     alt="App Screen" 
                     className="screen-img"
                   />
                   <div className="screen-overlay">
-                   
                     <p>Movie of the day</p>
                   </div>
               </div>
@@ -95,7 +89,39 @@ function App() {
         </motion.div>
       </section>
 
-      {/* FEATURES */}
+      {/* 2. STATS SECTION (Нове!) */}
+      <section className="stats-section">
+        <div className="stats-grid">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.5 }} whileInView={{ opacity: 1, scale: 1 }} transition={{duration: 0.5}}
+              className="stat-item"
+            >
+                <span className="stat-number">850k+</span>
+                <span className="stat-label">Movies & Shows</span>
+            </motion.div>
+            
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.5 }} whileInView={{ opacity: 1, scale: 1 }} transition={{duration: 0.5, delay: 0.1}}
+              className="stat-item"
+            >
+                <span className="stat-number">2M+</span>
+                <span className="stat-label">Actors & Crew</span>
+            </motion.div>
+            
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.5 }} whileInView={{ opacity: 1, scale: 1 }} transition={{duration: 0.5, delay: 0.2}}
+              className="stat-item"
+            >
+                {/* Символ блискавки для швидкості/оновлень */}
+                <span className="stat-number" style={{display:'flex', justifyContent:'center', alignItems:'center', gap:'10px'}}>
+                    Real-time
+                </span>
+                <span className="stat-label">Data Updates</span>
+            </motion.div>
+        </div>
+      </section>
+
+      {/* 3. FEATURES */}
       <section className="features-section">
         <motion.h2 
           initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
@@ -123,6 +149,42 @@ function App() {
           ))}
         </motion.div>
       </section>
+
+      {/* 4. TESTIMONIALS (Нове!) */}
+      <section className="reviews-section">
+          <motion.h2 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="section-header">
+            What Users Say
+          </motion.h2>
+          <div className="reviews-grid">
+              {[
+                { name: "Влад. С", text: "Ну додаток взагалі супер.", stars: "★★★★★" },
+                { name: "Тарас. Г", text: "Ніяких мінусів не бачу, ставлю лайк.", stars: "★★★★★" },
+                { name: "Марко Г.", text: "Ідеальна бібліотека з хорошим стилем ", stars: "★★★★★" }
+              ].map((review, i) => (
+                  <motion.div 
+                    key={i} 
+                    className="review-card"
+                    initial={{ opacity: 0, x: -50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.2 }}
+                  >
+                      <div className="stars">{review.stars}</div>
+                      <p>"{review.text}"</p>
+                      <h4>{review.name}</h4>
+                  </motion.div>
+              ))}
+          </div>
+      </section>
+
+      {/* 5. FOOTER (Нове!) */}
+      <footer className="footer">
+          <div className="footer-content">
+              <h3>Cinelink</h3>
+              <div className="footer-links">
+                  <a href="#">Contact</a>
+              </div>
+          </div>
+      </footer>
       
     </div>
   );
